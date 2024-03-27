@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoInterfaceParaImagem", "ProjetoInterfaceParaImagem\ProjetoInterfaceParaImagem.csproj", "{395F6B9B-92F8-4E7D-B712-90D801CAFA22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{395F6B9B-92F8-4E7D-B712-90D801CAFA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{395F6B9B-92F8-4E7D-B712-90D801CAFA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{395F6B9B-92F8-4E7D-B712-90D801CAFA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{395F6B9B-92F8-4E7D-B712-90D801CAFA22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {421378D4-AC59-4770-A6D1-DBC41C2F400B}
+	EndGlobalSection
+EndGlobal
