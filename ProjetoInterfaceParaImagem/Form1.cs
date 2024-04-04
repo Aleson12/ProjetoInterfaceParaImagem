@@ -7,12 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Timers;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace ProjetoInterfaceParaImagem
 {
     public partial class Form1 : Form
     {
-
+        private static System.Timers.Timer aTimer;
         private string[] listaImagens;
         private int currentImageIndex = 0;
 
@@ -38,6 +39,9 @@ namespace ProjetoInterfaceParaImagem
                 string imagePath = ofd.FileName; // obtém o caminho da imagem
                 pictureBox1.Image = Image.FromFile(imagePath); // carrega o caminho da imagem na moldura dela na interface
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // faz com que a imagem seja dimensionada para caber no PictureBox enquanto mantém a proporção original.
+            
+              
+                
             }
         }
 
@@ -72,12 +76,27 @@ namespace ProjetoInterfaceParaImagem
                     MessageBox.Show("A pasta está vazia. Selecione uma pasta com *imagens*.");
                 }
             }
+
+
+
+
+
+
+
+            aTimer = new System.Timers.Timer();
+            aTimer.Enabled = true;
+            aTimer.Interval = 3000; //3 segundos
+          //  aTimer.AutoReset = true;
+            aTimer.Elapsed += Timer_Tick;
+
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
+           currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
             DisplayImage();
+
         }
 
         private void DisplayImage()
