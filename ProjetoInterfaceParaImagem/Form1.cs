@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using System;
 using System.IO;
 using System.Linq;
+using System.Timers;
+using System.Threading;
 
 namespace ProjetoInterfaceParaImagem
 {
@@ -13,7 +15,6 @@ namespace ProjetoInterfaceParaImagem
 
         private string[] listaImagens;
         private int currentImageIndex = 0;
-        private System.Threading.Timer timer;
 
         public Form1()
         {
@@ -35,8 +36,8 @@ namespace ProjetoInterfaceParaImagem
             {
 
                 string imagePath = ofd.FileName; // obtém o caminho da imagem
-                pictureBox1.Image = Image.FromFile(imagePath);
-                // carrega o caminho da imagem na moldura dela na interface
+                pictureBox1.Image = Image.FromFile(imagePath); // carrega o caminho da imagem na moldura dela na interface
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // faz com que a imagem seja dimensionada para caber no PictureBox enquanto mantém a proporção original.
             }
         }
 
@@ -52,10 +53,6 @@ namespace ProjetoInterfaceParaImagem
 
                 if (listaImagens.Length > 0)
                 {
-
-                    //                 timer_Tick.Interval = 3000;
-                    //                 timer_Tick.Start();
-
                     for (int i = 0; i < listaImagens.Length; i++)
                     {
                         if (Path.GetExtension(listaImagens[i]) == ".jpg" || Path.GetExtension(listaImagens[i]) == ".jpeg" || Path.GetExtension(listaImagens[i]) == ".png" ||
@@ -77,7 +74,7 @@ namespace ProjetoInterfaceParaImagem
             }
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
             DisplayImage();
