@@ -39,9 +39,9 @@ namespace ProjetoInterfaceParaImagem
                 string imagePath = ofd.FileName; // obtém o caminho da imagem
                 pictureBox1.Image = Image.FromFile(imagePath); // carrega o caminho da imagem na moldura dela na interface
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // faz com que a imagem seja dimensionada para caber no PictureBox enquanto mantém a proporção original.
-            
-              
-                
+
+
+
             }
         }
 
@@ -81,22 +81,29 @@ namespace ProjetoInterfaceParaImagem
 
 
 
-
-
             aTimer = new System.Timers.Timer();
             aTimer.Enabled = true;
             aTimer.Interval = 3000; //3 segundos
-          //  aTimer.AutoReset = true;
-            aTimer.Elapsed += Timer_Tick;
 
+
+             aTimer.Elapsed += Timer_Tick;
+           
+            
+            aTimer.Close();
+            listaImagens = null;
 
         }
 
+ 
+
         private void Timer_Tick(object sender, EventArgs e)
         {
-           currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
-            DisplayImage();
+            foreach (string img in listaImagens)
+            {
 
+                currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
+                DisplayImage();
+            }
         }
 
         private void DisplayImage()
