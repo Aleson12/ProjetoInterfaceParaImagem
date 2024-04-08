@@ -8,6 +8,7 @@ using System.Linq;
 using System.Timers;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Diagnostics;
 
 namespace ProjetoInterfaceParaImagem
 {
@@ -84,31 +85,41 @@ namespace ProjetoInterfaceParaImagem
             aTimer = new System.Timers.Timer();
             aTimer.Enabled = true;
             aTimer.Interval = 3000; //3 segundos
+            aTimer.Elapsed += Timer_Tick;
 
-
-             aTimer.Elapsed += Timer_Tick;
            
-            
-            aTimer.Close();
-            listaImagens = null;
-
+            if (currentImageIndex   == listaImagens.Length - 1 )   
+            {
+               
+                aTimer.Stop();
+            }
+                
+           
+           
         }
 
  
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            foreach (string img in listaImagens)
-            {
 
-                currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
-                DisplayImage();
+            if (currentImageIndex == listaImagens.Length - 1) // se o indice da imagem atual for igual ao ultimo elemento da lista
+            {
+                aTimer.Stop(); //pare o elapsed!
             }
+
+            DisplayImage();
+            
         }
 
         private void DisplayImage()
         {
             pictureBox1.ImageLocation = listaImagens[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % listaImagens.Length;
+
+
+          
+
         }
     }
 }
